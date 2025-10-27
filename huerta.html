@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Huerta - EPS Vedia</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h2>EPS Vedia</h2>
+      <nav>
+        <a href="index.html">🏠 Inicio</a>
+        <a href="proyecto.html">🌱 Proyecto</a>
+        <a href="nosotros.html">👨‍🏫 Nosotros</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="clima">
+      <div class="cardTitulo"><h1>Clima del Invernadero</h1></div>
+      <div class="card">
+        <h1>🌡️ Temperatura: <b id="temp">-- °C</b></h1>
+        <h1>💧 Humedad: <b id="hum">-- %</b></h1>
+      </div>
+    </section>
+
+    <section id="bomba">
+      <div class="cardTitulo"><h1>Control de la Bomba</h1></div>
+
+      <!-- Botón de acceso -->
+      <div class="card" id="accesoSection">
+        <button class="btn btn-login" onclick="mostrarLogin()">Acceder al control de bomba</button>
+      </div>
+
+      <!-- Sección de ingreso de PIN -->
+      <div class="card" id="loginSection" style="display:none;">
+        <h2>Ingrese PIN de 5 dígitos</h2>
+        <div id="pinDisplay">_____</div>
+        <div class="teclado">
+          <button onclick="agregarNumero('1')">1</button>
+          <button onclick="agregarNumero('2')">2</button>
+          <button onclick="agregarNumero('3')">3</button>
+          <button onclick="agregarNumero('4')">4</button>
+          <button onclick="agregarNumero('5')">5</button>
+          <button onclick="agregarNumero('6')">6</button>
+          <button onclick="agregarNumero('7')">7</button>
+          <button onclick="agregarNumero('8')">8</button>
+          <button onclick="agregarNumero('9')">9</button>
+          <button onclick="borrarNumero()">⌫</button>
+          <button onclick="agregarNumero('0')">0</button>
+          <button onclick="verificarPIN()">✔</button>
+        </div>
+        <p id="loginError"></p>
+      </div>
+
+      <!-- Sección de control -->
+      <div class="card" id="controlSection" style="display:none;">
+        <p id="estadoModo" style="font-weight:bold; color:green;">Modo actual: --</p>
+
+        <div class="control-grid">
+          <div class="columna">
+            <button onclick="setModo('automatico')" class="btn btn-auto">Modo Automático</button>
+            <div id="tiemposSection" style="display:none; margin-top:20px;">
+              <h3>Configurar tiempos automáticos</h3>
+              Minutos Bomba Encendida: <input type="number" id="minOn"><br>
+              Minutos Bomba Apagada: <input type="number" id="minOff"><br>
+              <button onclick="guardarTiempos()" class="btn btn-save">Guardar Tiempos</button>
+            </div>
+          </div>
+          <div class="columna">
+            <button onclick="setModo('manual')" class="btn btn-manual">Modo Manual</button>
+            <div style="margin-top:20px;">
+              <button onclick="setRele('off')" class="btn btn-off">Encender Bomba / Relé abierto</button><br>
+              <button onclick="setRele('on')" class="btn btn-on">Apagar Bomba / Relé cerrado</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Proyecto Hidroponía EPS Vedia</footer>
+
+  <script type="module" src="js/app.js"></script>
+
+  <script>
+    // 👉 Al hacer clic en "Acceder al control de bomba"
+    function mostrarLogin() {
+      document.getElementById('accesoSection').style.display = 'none'; // Oculta el botón
+      document.getElementById('loginSection').style.display = 'block'; // Muestra el teclado
+    }
+
+  </script>
+</body>
+</html>
+
